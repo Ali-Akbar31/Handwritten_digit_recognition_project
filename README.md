@@ -37,3 +37,19 @@ The prediction engine relies on a multi-layer Convolutional Neural Network desig
 │   ├── index.html              # Main drawing/upload interface
 │   └── history.html            # Dashboard to view logged predictions
 └── README.md                   # Project documentation
+
+🔧 Installation & Setup
+1. Clone the repository:
+git clone [https://github.com/YourUsername/Handwritten_digit_recognition_project.git](https://github.com/YourUsername/Handwritten_digit_recognition_project.git)
+cd Handwritten_digit_recognition_project
+
+2. Install required dependencies:
+pip install tensorflow numpy flask pillow matplotlib
+
+3. Run the Flask Server:
+python app.py
+
+4. Access the Application:
+Open your web browser and navigate to: http://127.0.0.1:5000/
+
+Developed by Ali Akbar | Freelance Data Scientist & ML Engineer
