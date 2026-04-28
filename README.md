@@ -1,42 +1,39 @@
-# Handwritten Digit Recognition System using Deep Learning (CNN)
+# 🧠 End-to-End Handwritten Digit Recognition System
 
 ## 📌 Project Overview
-This project is an end-to-end Deep Learning application designed to recognize handwritten digits (0-9) with high accuracy. It features a custom-trained Convolutional Neural Network (CNN) model and an interactive web interface for real-time predictions.
+This project is a complete, full-stack Deep Learning application built to accurately recognize handwritten digits (0-9) in real-time. It bridges the gap between complex Machine Learning models and user-friendly web interfaces. 
 
-## 🚀 Features
-- **Real-time Recognition:** Users can draw digits on a web-based canvas and get instant results.
-- **High Accuracy:** Trained on the classic MNIST dataset with optimized hyperparameters.
-- **Web Integration:** A Flask-based backend to serve the model and handle user input.
-- **Data Visualization:** Includes scripts for model performance analysis (Loss/Accuracy plots).
+Trained on the standard MNIST dataset using a custom Convolutional Neural Network (CNN), the application doesn't just predict digits; it features robust image preprocessing and a built-in SQLite database to track, log, and display prediction history seamlessly.
 
-## 🛠️ Tech Stack
-- **Programming Language:** Python
-- **Deep Learning Framework:** TensorFlow / Keras
-- **Web Framework:** Flask
-- **Data Processing:** NumPy, Pandas
-- **Visualization:** Matplotlib, Seaborn
-- **Frontend:** HTML, CSS, JavaScript (Canvas API)
+## 🚀 Key Features
+* **Dual Input Methods:** Users can either draw digits on a responsive interactive canvas or upload pre-existing image files.
+* **Intelligent Preprocessing:** Built-in dynamic color inversion. The system calculates image mean pixels and automatically inverts white backgrounds to black, ensuring the model always receives optimal data formatting.
+* **Prediction History & Logging:** A fully integrated SQLite backend (`classification_history.db`) that automatically logs the timestamp, predicted digit, model confidence score, and input method, saving the actual image as a BLOB for future review.
+* **History Dashboard:** A dedicated web route (`/prediction_history`) to view past interactions and monitor model performance in real-world scenarios.
 
-## 🧠 Model Architecture
-The system uses a Convolutional Neural Network (CNN) which includes:
-- **Convolutional Layers:** To extract spatial features from images.
-- **Max-Pooling Layers:** To reduce dimensionality.
-- **Dropout Layers:** To prevent overfitting.
-- **Dense Layers:** Fully connected layers for classification.
-- **Softmax Activation:** To provide probability scores for digits 0-9.
+## 🛠️ Technology Stack
+* **Deep Learning Framework:** TensorFlow / Keras
+* **Backend Web Framework:** Flask (Python)
+* **Database:** SQLite3
+* **Data Processing:** NumPy, Pillow (PIL), Matplotlib
+* **Frontend:** HTML5, CSS3, JavaScript (Canvas API)
 
-## 📂 Project Structure
-- `app.py`: Flask application for deployment.
-- `model.h5`: The pre-trained CNN model.
-- `notebook.ipynb`: Data exploration and model training script.
-- `static/`: Contains CSS and JS for the web interface.
-- `templates/`: HTML files for the web app.
+## 🏗️ Model Architecture (CNN)
+The prediction engine relies on a multi-layer Convolutional Neural Network designed for low-latency inference:
+1. **Conv2D Layer 1:** 32 filters (3x3), ReLU activation + MaxPooling (2x2)
+2. **Conv2D Layer 2:** 64 filters (3x3), ReLU activation + MaxPooling (2x2)
+3. **Conv2D Layer 3:** 64 filters (3x3), ReLU activation
+4. **Flatten Layer:** Converting 2D matrices to 1D vectors
+5. **Dense Layer:** 64 neurons, ReLU activation
+6. **Output Layer:** 10 neurons (0-9 classes), Softmax activation for probability distribution
 
-## 🔧 How to Run
-1. Clone the repository: `git clone [Your Repo Link]`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the application: `python app.py`
-4. Open `http://127.0.0.1:5000/` in your browser.
-
----
-**Author:** Ali Akbar
+## 📂 Repository Structure
+```text
+├── app.py                      # Core Flask application and API routes
+├── model_training.py           # CNN model architecture and training script
+├── digit_model.keras           # Pre-trained deep learning model
+├── classification_history.db   # SQLite database for logging predictions
+├── templates/                  # Frontend HTML templates
+│   ├── index.html              # Main drawing/upload interface
+│   └── history.html            # Dashboard to view logged predictions
+└── README.md                   # Project documentation
